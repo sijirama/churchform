@@ -1,0 +1,23 @@
+.hdiv{
+    text-align: center;
+} 
+
+.hdiv h2{
+    margin: 0;
+} 
+
+.buttons{
+     display: flex;
+     flex-direction: column;
+    align-items: center;
+     gap: 5px;
+ }
+
+ .buttons *{
+     margin: 0.5rem 0;
+ }
+
+ .leftscreen{
+     display: flex;
+     align-items: center;
+ }
