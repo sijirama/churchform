@@ -1,0 +1,26 @@
+.screenmain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+//.hdiv{...}
+
+.hdiv h2 , .hdiv p{
+    margin: 0%;
+    margin: 0.5rem 0;
+}
+
+.screenmain{
+    width: 50%;
+}
+
+.mainform div {
+    margin: 0.18rem 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .screenmain{
+        width: 70%;
+    }
+}

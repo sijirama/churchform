@@ -2,6 +2,7 @@ import { Card, FormControl, FormHelperText  , TextField , Button, Alert} from '@
 import React, { useRef , useState } from "react"
 import { useAuth } from "../../context/AuthContext.jsx"
 import {Link , useNavigate } from "react-router-dom"
+import './signup.scss'
 
 
 export default function Signup(){
@@ -49,7 +50,7 @@ export default function Signup(){
 
     const styles = {
         card:{
-            height:"100vh",
+            //height:"100vh",
         },
 
         button:{
@@ -67,7 +68,7 @@ export default function Signup(){
 
     return(
         <div className="screen" style={styles.screen}>
-            <div className="leftscreen" >
+            <div className="screenmain" >
                 <div className="card">
                     <Card variant="" style={styles.card}>
                         <div className='hdiv'>
@@ -109,12 +110,6 @@ export default function Signup(){
                     </Card>
                 </div>
             </div>
-
-            <div className="rightscreen">
-                <div className="picturebackground">
-                </div>
-            </div>
-
         </div>
     )
 

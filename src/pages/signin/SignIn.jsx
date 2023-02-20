@@ -2,6 +2,7 @@ import { Card, FormControl, FormHelperText  , TextField , Button, Alert} from '@
 import React, { useRef , useState } from "react"
 import { useAuth } from "../../context/AuthContext.jsx"
 import {Link , useNavigate} from "react-router-dom"
+import './signin.scss'
 
 export default function Signin(){
     const navigate = useNavigate()
@@ -50,7 +51,7 @@ export default function Signin(){
 
     return(
         <div className="screen" style={styles.screen}>
-            <div className="leftscreen signinleftscreen" >
+            <div className="signinscreen" >
                 <div className="card" >
                     <Card variant="" style={styles.card} className="signincard">
                         <div className='hdiv'>
@@ -61,12 +62,12 @@ export default function Signin(){
                         <form className='mainform signinmainform' onSubmit={handleSubmit}>
 
                             <FormControl style={styles.textfield} className='forminput signinforminput' >
-                                <TextField  inputRef={emailRef} type="email" required = {true} id="outlined-basic" label="Email Address" variant="outlined" />
+                                <TextField  inputRef={emailRef} type="email" required = {true} id="outlined-basic" label="Email Address" variant="outlined"/>
                                 <FormHelperText id="my-helper-text">Your Email Address</FormHelperText>
                             </FormControl >
 
                             <FormControl style={styles.textfield} className='forminput signinforminput' >
-                                <TextField   inputRef={passwordRef} required={true} id="outlined-basic" type="password" label="Password" variant="outlined" />
+                                <TextField   inputRef={passwordRef} required={true} id="outlined-basic" type="password" label="Password" variant="outlined"/>
                                 <FormHelperText id="my-helper-text">Your Password</FormHelperText>
                             </FormControl >
                             
@@ -77,11 +78,6 @@ export default function Signin(){
                             <p> Forgot your password? <Link className = "link" to="/forgotpassword"> Click here to change </Link> </p>
                         </div>
                     </Card>
-                </div>
-            </div>
-
-            <div className="rightscreen">
-                <div className="picturebackground">
                 </div>
             </div>
         </div>
