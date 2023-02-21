@@ -5,6 +5,8 @@ import {LocalizationProvider} from "@mui/x-date-pickers"
 import TextareaAutosize from '@mui/base/TextareaAutosize'
 import  {AdapterDayjs}  from '@mui/x-date-pickers/AdapterDayjs';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import {useNavigate} from 'react-router-dom'
+import {useAuth} from '../../context/AuthContext'
 import { addDoc,collection } from 'firebase/firestore'
 import { storage } from '../../context/firebase';
 import {database} from '../../context/firebase'
@@ -28,7 +30,8 @@ const Event = () => {
     const [file,setFile] = useState(null)
     const [progress , setProgress] = useState(null)
     const [added, setAdded] = useState(false)
-    
+    const { currentUser} = useAuth()
+    const navigate = useNavigate()
     //WARN:
     const titleRef = useRef()
     const datetimeRef = useRef()
@@ -75,10 +78,14 @@ const Event = () => {
         try {
             await addDoc(collection(database, "events"),{
               ...form,
-              userId : user.uid
-            }
+              userId : currentUser.email
+            })
+        }catch(error){
+            console.log(error)
         }
-    }}
+        }
+        navigate("/")
+    }
 
 
     const handleChange = (e) => {
