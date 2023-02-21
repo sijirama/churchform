@@ -29,7 +29,7 @@ const Event = () => {
     const {title, datetime , description} = form
     const [file,setFile] = useState(null)
     const [progress , setProgress] = useState(null)
-    const [added, setAdded] = useState(false)
+    //const [added, setAdded] = useState(false)
     const { currentUser} = useAuth()
     const navigate = useNavigate()
     //WARN:
@@ -63,7 +63,7 @@ const Event = () => {
             },() => {
                 getDownloadURL(uploadTask.snapshot.ref).then((downaloadUrl) => {
                     setForm((prev) => ({ ...prev, imgUrl:downaloadUrl}))
-                    setAdded(true)
+                    //setAdded(true)
                 })})}
 
         file && uploadFile()
@@ -73,6 +73,7 @@ const Event = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log("submitted")
 
         if(title && description && datetime){
         try {
@@ -89,15 +90,16 @@ const Event = () => {
 
 
     const handleChange = (e) => {
+        e.preventDefault()
         setForm({ ...form, [e.target.name]: e.target.value });
+        console.log(form)
     };
 
-    //console.log(form)
     return (
 
         <div className='eventAddpage'>
             <div className='eventAddwrapper'>
-                <form className='eventform' onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className='eventform'> 
                     
                     <FormControl className='forminput' >
                         <TextField  
@@ -140,7 +142,7 @@ const Event = () => {
                           component="label"
                         >
                         {
-                            added?("Image Added"):("Upload an Image")
+                            file?("Image Added"):("Upload an Image")
                         }
                         <input 
                         type="file"
@@ -150,12 +152,12 @@ const Event = () => {
                     
                      <Button
                         disabled = {progress !== null && progress < 100}
-                          variant="contained"
-                          className="eventButton"
-                          component="label"
+                        variant="contained"
+                        className="eventButton"
+                        //component="label"
                         type='submit'
                         >
-                        Submit 
+                        Submit
                     </Button>
 
                 </form>

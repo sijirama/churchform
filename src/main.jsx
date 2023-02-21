@@ -6,11 +6,11 @@ import './index.scss'
 import {BrowserRouter as Router} from "react-router-dom"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+//  <React.StrictMode>
         <AuthProvider>
             <Router>
                 <App />
             </Router>
         </AuthProvider>
-  </React.StrictMode>
+//  </React.StrictMode>
 )
