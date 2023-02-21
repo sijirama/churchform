@@ -7,6 +7,12 @@ import ProtectedRoute from './utilities/protectedRoute'
 import Event from "../src/pages/event/Event.jsx"
 
 function App() {
+    
+
+
+
+
+
   return (
     <div className="App">
       <Routes>
