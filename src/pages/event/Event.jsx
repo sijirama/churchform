@@ -32,10 +32,11 @@ const Event = () => {
     //const [added, setAdded] = useState(false)
     const { currentUser} = useAuth()
     const navigate = useNavigate()
+    
     //WARN:
-    const titleRef = useRef()
-    const datetimeRef = useRef()
-    const descriptionRef = useRef()
+    //const titleRef = useRef()
+    //const datetimeRef = useRef()
+    //const descriptionRef = useRef()
 
 
 
@@ -63,7 +64,6 @@ const Event = () => {
             },() => {
                 getDownloadURL(uploadTask.snapshot.ref).then((downaloadUrl) => {
                     setForm((prev) => ({ ...prev, imgUrl:downaloadUrl}))
-                    //setAdded(true)
                 })})}
 
         file && uploadFile()
@@ -76,14 +76,12 @@ const Event = () => {
         console.log("submitted")
 
         if(title && description && datetime){
-        try {
+            try {
             await addDoc(collection(database, "events"),{
               ...form,
               userId : currentUser.email
             })
-        }catch(error){
-            console.log(error)
-        }
+            }catch(error){console.log(error)}
         }
         navigate("/")
     }
@@ -154,7 +152,6 @@ const Event = () => {
                         disabled = {progress !== null && progress < 100}
                         variant="contained"
                         className="eventButton"
-                        //component="label"
                         type='submit'
                         >
                         Submit
