@@ -86,15 +86,18 @@ const Event = () => {
         navigate("/")
     }
 
-
     const handleChange = (e) => {
         e.preventDefault()
         setForm({ ...form, [e.target.name]: e.target.value });
         console.log(form)
     };
 
-    return (
+    const handleDateTime = (e) => {
+        let datetime = new Date(e)
+        setForm({ ...form , datetime})
+    }
 
+    return (
         <div className='eventAddpage'>
             <div className='eventAddwrapper'>
                 <form onSubmit={handleSubmit} className='eventform'> 
@@ -118,7 +121,7 @@ const Event = () => {
                             label="DateTimePicker"
                             name="datetime"
                             value={datetime}
-                            onChange={(datetime) => setForm({ ...form, datetime})}
+                            onChange={handleDateTime}
                             />
                         </LocalizationProvider>
                         <FormHelperText id="my-helper-text">Pick a Date and Time</FormHelperText>
